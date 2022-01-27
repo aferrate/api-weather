@@ -1,3 +1,5 @@
+Every modification needs a image build and new start (sorry for the incovenience).
+
 First you shuold put your API key in Dockerfile.
 
 Build image:
