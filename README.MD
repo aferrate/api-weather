@@ -1,8 +1,8 @@
-### Every modification needs a image build and new start (sorry for the incovenience).
+# Every modification needs a image build and new start (sorry for the incovenience).
 
-# First you should put your API key in Dockerfile.
+### First you should put your API key in Dockerfile.
 
-# Steps for installing and running
+### Steps for installing and running
 Build image:
 ```
 docker build -t weather-api .
