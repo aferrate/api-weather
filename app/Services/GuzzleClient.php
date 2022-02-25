@@ -1,11 +1,10 @@
 <?php
     declare(strict_types=1);
-
     namespace App\Services;
 
-    require_once("/var/www/vendor/autoload.php");
-    require_once("/var/www/Interfaces/HttpClientInterface.php");
-    
+    require_once '/var/www/vendor/autoload.php';
+    require_once '/var/www/Interfaces/HttpClientInterface.php';
+
     use App\Interfaces\HttpClientInterface;
     use GuzzleHttp\Client;
     use GuzzleHttp\Exception\BadResponseException;
@@ -23,7 +22,7 @@ class GuzzleClient implements HttpClientInterface
     const MSG_ERROR_HOST = 'Error: Cannot connect to host';
     const MSG_ERROR_API = 'Error: invalid API key';
     const MSG_ERROR_UNKNOWN = 'Error: unknown error';
-    
+
     /**
      * Property http client
      *
@@ -47,7 +46,7 @@ class GuzzleClient implements HttpClientInterface
     public function sendRequestWeather(string $city): string
     {
         try {
-            $response = $this->client->request('GET', 'weather?q='.$city.'&appid='.getenv('KEY').'&units=metric')->getBody()->getContents();
+            $response = $this->client->request('GET', 'weather?q=' . $city . '&appid=' . getenv('KEY') . '&units=metric')->getBody()->getContents();
 
             return $response;
         } catch (BadResponseException $e) {

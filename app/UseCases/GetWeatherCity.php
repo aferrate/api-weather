@@ -1,9 +1,8 @@
 <?php
     declare(strict_types=1);
-
     namespace App\UseCases;
 
-    require_once("/var/www/Interfaces/HttpClientInterface.php");
+    require_once '/var/www/Interfaces/HttpClientInterface.php';
 
     use App\Interfaces\HttpClientInterface;
 
@@ -15,8 +14,8 @@
  */
 final class GetWeatherCity
 {
-    const MSG_ERROR = 'city must be alphabetic var, example (php ./main.php weather new-york)'.
-        'must have second argument must be string wheater and third must be a city,'.
+    const MSG_ERROR = 'city must be alphabetic var, example (php ./main.php weather new-york)' .
+        'must have second argument must be string wheater and third must be a city,' .
         'cities with blank spaces should be replaced with - (new york should be new-york)'
     ;
 
@@ -31,7 +30,7 @@ final class GetWeatherCity
     public function getInfo(HttpClientInterface $httpClient, array $args): string
     {
         if (!$this->checkParams($args)) {
-            return '{"code": 400, "message": "'.self::MSG_ERROR.'"}';
+            return '{"code": 400, "message": "' . self::MSG_ERROR . '"}';
         }
 
         $city = $this->formatCity($args[array_key_last($args)]);
@@ -79,13 +78,13 @@ final class GetWeatherCity
     private function formatResult(string $response): string
     {
         if (strpos($response, 'Error') !== false) {
-            return '{"code":500, "message":"'.$response.'"}';
+            return '{"code":500, "message":"' . $response . '"}';
         }
 
         $arrayResult = json_decode($response, true);
 
-        $result = $arrayResult['weather'][0]['description'].', '.$arrayResult['main']['temp'].' degrees Celsius.';
-        
-        return '{"code":200, "message":"'.$result.'"}';
+        $result = $arrayResult['weather'][0]['description'] . ', ' . $arrayResult['main']['temp'] . ' degrees Celsius.';
+
+        return '{"code":200, "message":"' . $result . '"}';
     }
 }

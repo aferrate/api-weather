@@ -1,10 +1,9 @@
 <?php
     declare(strict_types=1);
-
     namespace App\Controller;
 
-    require_once("/var/www/Services/GuzzleClient.php");
-    require_once("/var/www/UseCases/GetWeatherCity.php");
+    require_once '/var/www/Services/GuzzleClient.php';
+    require_once '/var/www/UseCases/GetWeatherCity.php';
 
     use App\Services\GuzzleClient;
     use App\UseCases\GetWeatherCity;

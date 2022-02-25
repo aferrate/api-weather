@@ -1,9 +1,8 @@
 <?php
     declare(strict_types=1);
-
     namespace App\Tests;
 
-    require_once("/var/www/Controllers/WeatherController.php");
+    require_once '/var/www/Controllers/WeatherController.php';
 
     use PHPUnit\Framework\TestCase;
     use App\Controller\WeatherController;
@@ -12,7 +11,7 @@
  * Class description
  *
  * @author Albert Ferraté
- * This class is for testing 
+ * This class is for testing
  */
 final class TestWeather extends TestCase
 {
@@ -49,8 +48,8 @@ final class TestWeather extends TestCase
     {
         $result = $this->controllerWeather->getCityInfo(['./main.php', 'weathr', 'new-york']);
 
-        $this->assertEquals($result, '{"code": 400, "message": "city must be alphabetic var'.
-            ', example (php ./main.php weather new-york)must have second argument must be string wheater'.
+        $this->assertEquals($result, '{"code": 400, "message": "city must be alphabetic var' .
+            ', example (php ./main.php weather new-york)must have second argument must be string wheater' .
             ' and third must be a city,cities with blank spaces should be replaced with - (new york should be new-york)"}');
     }
 
@@ -63,8 +62,8 @@ final class TestWeather extends TestCase
     {
         $result = $this->controllerWeather->getCityInfo(['./main.php', 'new-york']);
 
-        $this->assertEquals($result, '{"code": 400, "message": "city must be alphabetic var'.
-            ', example (php ./main.php weather new-york)must have second argument must be string wheater'.
+        $this->assertEquals($result, '{"code": 400, "message": "city must be alphabetic var' .
+            ', example (php ./main.php weather new-york)must have second argument must be string wheater' .
             ' and third must be a city,cities with blank spaces should be replaced with - (new york should be new-york)"}');
     }
 
@@ -93,7 +92,7 @@ final class TestWeather extends TestCase
 
         $this->assertEquals($result, '{"code":500, "message":"Error: invalid API key"}');
 
-        putenv('KEY='.getenv('KEY_BKP'));
+        putenv('KEY=' . getenv('KEY_BKP'));
     }
 
     /**
@@ -110,6 +109,6 @@ final class TestWeather extends TestCase
 
         $this->assertEquals($result, '{"code":500, "message":"Error: Cannot connect to host"}');
 
-        putenv('API_URL='.getenv('API_BKP'));
+        putenv('API_URL=' . getenv('API_BKP'));
     }
 }
