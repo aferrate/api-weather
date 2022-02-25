@@ -18,6 +18,11 @@ Stop running container:
 docker stop
 ```
 
+Before run program (execute inside container):
+```
+composer install
+```
+
 Run program (execute inside container):
 ```
 php ./main.php weather new-york
