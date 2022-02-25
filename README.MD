@@ -1,31 +1,21 @@
-# Every modification needs a image build and new start (sorry for the incovenience).
-
-### First you should put your API key in Dockerfile.
+# API weather city
 
 ### Steps for installing and running
-Build image:
-```
-docker build -t weather-api .
-```
 
-Run image:
+Run:
 ```
-docker run -dit weather-api
-```
-
-Check id container:
-```
-docker ps
+cd laradock
+docker-compose up -d workspace
 ```
 
 Enter container:
 ```
-docker exec -it <contaier-id> sh
+docker-compose exec workspace bash
 ```
 
 Stop running container:
 ```
-docker stop <contaier-id>
+docker stop
 ```
 
 Run program (execute inside container):
